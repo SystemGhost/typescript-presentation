@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!--1-->
+      <section>
+        <h2>SASS</h2>
+        <img data-src="img\Sass_Logo_Color.png" alt="Sass Logo">
+      </section>
+
+      <section>
+        <h2>Chapter:</h2>
+        <ul>
+          <li>Selectors</li>
+          <li>Imports</li>
+          <li>Variables</li>
+          <li>Insert: #{}</li>
+          <li>Directives</li>
+          <li>Mixins</li>
+          <li>Functions</li>
+        </ul>
+      </section>
+
+      <!--2-->
+      <section>
+
+        <section>
+          <h2>Selectors</h2>
+          <p>CSS</p>
+          <pre><code>
+  #main {
+    color: #999;
+  }
+  #main .content {
+    color: #bfbfbf;
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Selectors</h2>
+          <p>SCSS</p>
+          <pre><code>
+  #main {
+    color: #999;
+
+    .content {
+      color: #bfbfbf;
+    }
+  }
+        </code></pre>
+        </section>
+
+        <section>
+          <h2>SCSS is DOM structure</h2>
+          <p>SCSS</p>
+          <pre><code>
+  #main h1 {
+    color: #00ff00;
+    width: 97%;
+
+    .title {
+      background-color: #ff0000;
+      color: #000000;
+    }
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>SCSS is DOM structure</h2>
+          <p>CSS</p>
+          <pre><code>
+  #main h1 {
+    color: #00ff00;
+    width: 97%;
+  }
+  #main h1 .title {
+    background-color: #ff0000;
+    color: #000000;
+  }
+                        
+        </code></pre>
+        </section>
+
+        <section>
+          <h2>& - parent</h2>
+          <p>SCSS</p>
+          <pre><code>
+  #wrapper h1 {
+    width:20px;
+
+    &:hover {
+      width:25px;
+    }
+  }
+          </code></pre>
+
+          <pre class="fragment"><code>
+  #wrapper h1 {
+    width:20px;
+  }
+
+  #wrapper h1:hover{
+    width:25px;
+  }
+          </code></pre>
+        </section>
+
+      </section>
+
+      <!--3-->
+      <section>
+
+        <section>
+          <h2>Imports</h2>
+          <pre class="fragment"><code>
+  @import “foo.css”; 
+
+  @import “foo” screen; 
+
+  @import “foo.scss” screen;
+
+  @import “foo1”,”foo2" screen;
+    </code> </pre>
+        </section>
+
+        <section>
+          <h2>Imports</h2>
+          <p>Partial</p>
+          <pre><code>
+  @import “colors”; 
+
+  @import “utils/foo.scss”; 
+      </code> </pre>
+        </section>
+
+        <section>
+          <h2>Imports</h2>
+          <p>Nested imports</p>
+          <pre class="fragment"><code>
+  .example {
+    color: red;
+  }
+            </code></pre>
+          <pre class="fragment"><code>
+  #main {
+    @import “demo”;
+  }
+            </code></pre>
+          <pre class="fragment">
+            <code>
+  #main .example {
+    color: red;
+  }
+          </code></pre>
+        </section>
+
+      </section>
+
+      <!--4-->
+      <section>
+
+        <section>
+          <h2>Variables</h2>
+          <pre><code>
+  $width: 10px;
+  $headercolor:red;
+  
+  #main h1{
+  width: $width;
+  color:$headercolor;
+  }
+          </code></pre>
+          <pre class="fragment"><code>
+  #main h1{
+    width: 10px;
+    color:red;
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Variables global</h2>
+          <pre><code>
+  #main {
+    $width: 5em !global;
+    width: $width;
+  }
+  #sidebar {
+    width: $width;
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Operations</h2>
+          <pre><code>
+  p {
+    font: 10px/8px; 
+    $width: 1000px;
+    width: $width/2; 
+    width: round(1.5)/2; 
+    height: (500px/2); 
+    margin-left: 5px + 8px/2px; 
+    font: (italic bold 10px/8px); 
+    }
+          </code></pre>
+          <pre class="fragment"><code>
+  p {
+    font: 10px/8px;
+    width: 500px;
+    height: 250px;
+    margin-left: 9px;
+  }
+          </code></pre>
+        </section>
+      </section>
+
+      <!--5-->
+      <section>
+        <h2>Insert: # {}</h2>
+        <pre><code>
+  $name: foo;
+  $attr: border;
+
+  p.#{$name} {
+    #{$attr}-color: blue;
+  }
+            
+        </code></pre>
+        <pre class="fragment"><code>
+  p.foo {
+    border-color: blue;
+  }
+        </code></pre>
+      </section>
+
+      <!--6-->
+      <section>
+
+        <section>
+          <h2>Directives</h2>
+          <p>@if</p>
+          <pre><code>
+  p {
+    @if 1 + 1 == 2 { border: 1px solid; }
+    @if 5 < 3 { border: 2px dotted; }
+    @if null { border: 3px double; }
+  }
+            </code></pre>
+          <pre class="fragment"><code>
+  p {
+    border: 1px solid;
+  }
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>Directives</h2>
+          <p>@for</p>
+          <pre><code>
+  @for $i from 1 through 3 {
+    .item-#{$i} { width: 2em * $i; }
+  }
+          </code></pre>
+          <pre class="fragment"><code>
+  .item-1 { width: 2em; }
+  .item-2 { width: 4em; }
+  .item-3 { width: 6em; }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Directives</h2>
+          <p>@each</p>
+          <pre><code>
+  @each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+    #{$header} { 
+      font-size: $size;
+    }
+  }
+                </code></pre>
+          <pre class="fragment"><code>
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.2em; }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Directives</h2>
+          <p>@while</p>
+          <pre><code>
+  $i: 6;
+
+  @while $i > 0 {
+    .item-#{$i} { width: 2em * $i; }
+    $i: $i — 2;
+  }
+          </code></pre>
+          <pre class="fragment"><code>
+  .item-6 { width: 12em; }
+  .item-4 { width: 8em; }
+  .item-2 { width: 4em; }
+          </code></pre>
+        </section>
+
+      </section>
+
+      <!--7-->
+      <section>
+
+        <section>
+          <h2>Mixins</h2>
+          <p>@mixin, @include</p>
+          <pre><code>
+  @mixin large-text {
+    font: {
+      family: Arial;
+      size: 20px;
+      weight: bold;
+    }
+    color: #ff0000;
+  }
+  .page-title {
+    @include large-text;
+    padding: 4px;
+    margin-top: 10px;
+  }
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>Mixins</h2>
+          <p>Results</p>
+          <pre><code>
+  .page-title {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff0000;
+    padding: 4px;
+    margin-top: 10px;
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Compound mixins</h2>
+          <pre><code>
+  @mixin mixin-one{
+    color: red;
+  }
+  @mixin mixin-two{
+    width:20px;
+  }
+  .page-title {
+    @include mixin-one;
+    @include mixin-two;
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>variables in mixins</h2>
+          <pre><code>
+  $globel-prefixes:webkit moz ms o;
+  @mixin prefixer ($property,$value,$prefixes:null) {
+    @if $prefixes==null {
+      @each $prefix in $globel-prefixes {
+      -#{$prefix}-#{$property}: $value; }
+    } @else {
+      @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value; }
+    }
+    #{$property}: $value;
+  }
+  * {
+    @include prefixer(box-sizing,border-box);
+  }
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>variables in mixins</h2>
+          <p>Compiled into:</p>
+          <pre><code>
+  * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+          </code></pre>
+        </section>
+
+      </section>
+
+      <!--8-->
+      <section>
+        <h2>Functions</h2>
+        <pre><code>
+  $no-of-columns:12;
+  $gutter-width:2%;
+
+  @function get-column-width($i) {
+   @return (100% — ($no-of-columns/$i — 1) * $gutter-width) 
+   / $no-of-columns * $i;
+  }
+  .col-6 {
+    width:get-column-width(6);
+  }
+        </code></pre>
+        <pre class="fragment"><code>
+  .col-6 {
+    width: 49%;
+  }
+        </code></pre>
+      </section>
+
+    </div>
+  </div>
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ]
+    });
+  </script>
+</body>
+
+</html>
