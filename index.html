@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>reveal.js</title>
+  <title>TypeScript</title>
 
   <link rel="stylesheet" href="css/reveal.css">
   <link rel="stylesheet" href="css/theme/black.css">
@@ -34,8 +34,7 @@
 
       <!--1-->
       <section>
-        <h2>TypeScript</h2>
-        <img data-src="img\typescript-logo.svg" alt="TypeScript Logo">
+        <h2><img data-src="img\typescript-logo.svg" alt="TypeScript Logo"></h2>
         <p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</p>
         <p>Any browser. Any host. Any OS. Open source.</p>
       </section>
@@ -93,8 +92,7 @@
         <ul>
           <li>Provide type definitions, separate from the corresponding source</li>
           <li>Analogous to header files in C/C++</li>
-          <li>Can be used to describe the exported virtual TypeScript types of a JavaScript library or module when a
-            third-party developer consumes it from TypeScript</li>
+          <li>Can be used to describe the exported virtual TypeScript types of a JavaScript library or module </li>
           <li>Gives type safety, intellisense and compile errors</li>
           <li>DOM and jQuery provided with TypeScript</li>
           <li>Write your own for any existing JavaScript library / code</li>
@@ -159,6 +157,25 @@
         </ul>
       </section>
 
+      <!--10_1-->
+      <section>
+        <h2>Classes</h2>
+        <pre><code >    class User {
+      private _name: string;
+      private _age: number;
+    
+      constructor(name: string, age: number) {
+          this._name = name;
+          this._age = age;
+      }
+
+      public displayInfo(): void {
+          console.log("name: " + this._name + "; 
+          age: " + this._age);
+      }
+    }</code></pre>
+      </section>
+
       <!--11-->
       <section>
         <h2>Interfaces</h2>
@@ -172,6 +189,27 @@
         </ul>
       </section>
 
+      <!--11_2-->
+      <section>
+        <h2>Interfaces</h2>
+        <pre><code >      interface IUser {
+          id: number;
+          name: string;
+      }
+
+      let employee: IUser = {
+          id: 1, 
+          name: "Alice"
+      }
+
+      function getEmployeeInfo(user: IUser): void {
+          console.log("id: " + user.id);
+          console.log("name: " + user.name)
+      }
+
+      getEmployeeInfo(employee);</code></pre>
+      </section>
+
       <!--12-->
       <section>
         <h2>Modules</h2>
@@ -183,18 +221,33 @@
           <li>Accessibility for internal and external modules</li>
         </ul>
       </section>
-      <!--end typescript-->
-      <!---->
+
       <section>
-        <h2>Header</h2>
+        <h2>Modules</h2>
+        <pre><code >      export interface Device{
+          name: string;
+      }
+           
+      export class Phone implements Device {
+          name: string;
+          constructor(n:string){
+              this.name = n;
+          }
+      }
+           
+      export function Call(phone: Phone) : void{
+          console.log("Make a call by", phone.name);
+      }</code></pre>
+      </section>
+
+      <!--13-->
+      <section>
+        <h2>Resources</h2>
         <ul>
-          <li>Elem</li>
-          <li>Elem</li>
-          <li>Elem</li>
-          <li>Elem</li>
-          <li>Elem</li>
-          <li>Elem</li>
-          <li>Elem</li>
+          <li><a href="http://www.typescriptlang.org/" target="_blank">http://www.typescriptlang.org</a></li>
+          <li><a href="https://metanit.com/web/typescript/" target="_blank">https://metanit.com/web/typescript</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/TypeScript"
+              target="_blank">https://en.wikipedia.org/wiki/TypeScript</a></li>
         </ul>
       </section>
     </div>
