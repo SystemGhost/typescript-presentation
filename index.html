@@ -128,6 +128,16 @@
         </ul>
       </section>
 
+      <!--8_1-->
+      <section>
+        <h2>Primitive Types</h2>
+        <pre><code>  let decimal: number = 6;
+  let isDone: boolean = false;
+  let color: string = "blue";
+  let u: undefined = undefined;
+  let n: null = null;</code></pre>
+      </section>
+
       <!--9-->
       <section>
         <h2>Object Types</h2>
@@ -140,6 +150,104 @@
         </ul>
         <pre><code>const reports: Employee[] = [];</code></pre>
         <p>All types are subtypes of a single top type called the <span class="single-code">Any</span> type.</p>
+      </section>
+
+      <!--9_1-->
+      <section>
+        <h2>Object Types</h2>
+        <pre><code>  let list: Array&lt;number&gt; = [1, 2, 3];
+  let list: number[] = [1, 2, 3];
+
+  let notSure: any = 4;
+  notSure = "maybe a string instead";
+  notSure = false;
+
+  let unusable: void = undefined;</code></pre>
+      </section>
+
+      <!--!10-->
+      <section>
+        <h2>Functions</h2>
+        <ul>
+          <li>Functions are the fundamental building block of any application in JavaScript</li>
+          <li>Layers of abstraction, mimicking classes, information hiding, and modules</li>
+          <li>In TypeScript, while there are classes, namespaces, and modules, functions still play the key role in
+            describing how to do things</li>
+          <li>Functions has optional and default parameters</li>
+          <li>Function can be declared using Function declaration, Function expression and Arrow function</li>
+          <li>Can be Overloaded</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Functions</h2>
+        <pre><code>  function add(x: number, y: number): number {
+    return x + y;
+  }
+  
+  let myAdd = function(x: number, y: number): number { 
+    return x + y;
+  };
+
+  let myAdd: (baseValue: number, increment: number) => number =
+  function(x: number, y: number): number { return x + y; };</code></pre>
+      </section>
+
+      <section>
+        <h2>Default Parameters</h2>
+        <pre><code>  function buildName(firstName: string, lastName?: string) {
+  if (lastName)
+      return firstName + " " + lastName;
+  else
+      return firstName;
+  }
+  
+  let result1 = buildName("Bob");  
+  // error, too few parameters
+  let result2 = buildName("Bob", "Adams", "Sr.");  
+  // error, too many parameters
+  let result3 = buildName("Bob", "Adams");  
+  // ah, just right</code></pre>
+      </section>
+
+      <section>
+        <h2>Optional Parameters</h2>
+        <pre><code>  function buildName(firstName: string, lastName = "Smith") {
+    return firstName + " " + lastName;
+  }
+  
+  let result1 = buildName("Bob");  
+  // works correctly now, returns "Bob Smith"
+  let result2 = buildName("Bob", undefined);  
+  // still works, also returns "Bob Smith"
+  let result3 = buildName("Bob", "Adams", "Sr.");  
+  // error, too many parameters
+  let result4 = buildName("Bob", "Adams");  
+  // ah, just right</code></pre>
+      </section>
+
+      <!--Genric-->
+      <section>
+        <h2>Generics</h2>
+        <ul>
+          <li>Working with any types</li>
+          <li>Most flexible</li>
+          <li>Allows users to consume these components and use their own types</li>
+        </ul>
+        <pre><code>const reports: Employee[] = [];</code></pre>
+        <p>All types are subtypes of a single top type called the <span class="single-code">Any</span> type.</p>
+      </section>
+
+      <section>
+        <h2>Generics</h2>
+        <pre><code>  function getId<T>(id: T): T {
+      return id;
+  }
+
+  let result1 = getId&lt;number&gt;(5);
+  console.log(result1);
+  let result2 = getId&lt;string&gt;("abc");
+  console.log(result2);</code></pre>
       </section>
 
       <!--10-->
