@@ -202,13 +202,16 @@
       return firstName;
   }
   
-  let result1 = buildName("Bob");  
+  let result1 = buildName("Bob");
+  let result2 = buildName("Bob", "Adams", "Sr.");
+  let result3 = buildName("Bob", "Adams");</code></pre>
+      </section>
+      <!--  let result1 = buildName("Bob");  
   // error, too few parameters
   let result2 = buildName("Bob", "Adams", "Sr.");  
   // error, too many parameters
   let result3 = buildName("Bob", "Adams");  
-  // ah, just right</code></pre>
-      </section>
+  // ah, just right-->
 
       <section>
         <h2>Optional Parameters</h2>
@@ -217,14 +220,18 @@
   }
   
   let result1 = buildName("Bob");  
+  let result2 = buildName("Bob", undefined);  
+  let result3 = buildName("Bob", "Adams", "Sr.");  
+  let result4 = buildName("Bob", "Adams");  </code></pre>
+      </section>
+      <!--  let result1 = buildName("Bob");  
   // works correctly now, returns "Bob Smith"
   let result2 = buildName("Bob", undefined);  
   // still works, also returns "Bob Smith"
   let result3 = buildName("Bob", "Adams", "Sr.");  
   // error, too many parameters
   let result4 = buildName("Bob", "Adams");  
-  // ah, just right</code></pre>
-      </section>
+  // ah, just right-->
 
       <!--Genric-->
       <section>
@@ -346,6 +353,16 @@
       export function Call(phone: Phone) : void{
           console.log("Make a call by", phone.name);
       }</code></pre>
+      </section>
+
+      <section>
+        <h2>Examples module imports</h2>
+        <pre><code >  import Entry from "./components/Entry";
+  import { DefaultHeaders } from "../constants/http";
+  import "/mod";</code></pre>
+
+        <pre><code >  import * as $ from "jquery";
+  import { Component } from "@angular/core";</code></pre>
       </section>
 
       <!--13-->
